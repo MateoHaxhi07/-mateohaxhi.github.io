@@ -14,23 +14,44 @@
         }
 
         body {
-            text-align: center;
             background-color: #f4f4f4;
             color: #333;
+            text-align: center;
         }
 
+        /* Header */
         .header {
-            background-color: #fff;
-            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .header h1 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #444;
+        /* Navigation Bar */
+        .navbar {
+            background-color: #34495e;
+            padding: 10px;
+            text-align: center;
         }
 
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 16px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Content Container */
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -40,33 +61,45 @@
             border-radius: 8px;
         }
 
-        .filters {
-            margin-bottom: 20px;
-        }
-
-        .filters select {
-            padding: 8px;
-            margin: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
+        /* Download Button */
         .download-btn {
             display: inline-block;
-            background-color: #333;
+            background-color: #e74c3c;
             color: white;
             padding: 12px 24px;
             font-size: 16px;
             text-decoration: none;
             border-radius: 6px;
             transition: background-color 0.3s ease-in-out;
+            margin-bottom: 15px;
         }
 
         .download-btn:hover {
-            background-color: #555;
+            background-color: #c0392b;
         }
 
+        /* Tableau Dashboard */
         .dashboard-container {
+            margin-top: 20px;
+        }
+
+        iframe {
+            display: block;
+            width: 90%;
+            height: 700px;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
             margin-top: 20px;
         }
 
@@ -75,59 +108,51 @@
             .container {
                 padding: 10px;
             }
+
+            iframe {
+                height: 500px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <div class="header">
-        <h1>Sales Overview | Vila Ferdinand</h1>
+    <!-- Header -->
+    <div class="header">📊 Sales Dashboard | Vila Ferdinand</div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html">🏠 Home</a>
+        <a href="about.html">📖 About</a>
+        <a href="contact.html">📩 Contact</a>
     </div>
 
     <div class="container">
-        <!-- Download Button -->
-        <a href="#" class="download-btn">📥 Download PDF</a>
+        <h2>📈 Sales Overview</h2>
+        <p>View the interactive sales report for Vila Ferdinand.</p>
 
-        <!-- Dashboard Embed -->
-        <div class='dashboard-container'>
-            <div class='tableauPlaceholder' id='viz1738499715885' style='position: relative; width: 100%; height: 80vh;'>
+        <!-- Download Button -->
+        <a href="#" class="download-btn">📥 Download Report (PDF)</a>
+
+        <!-- Tableau Dashboard Embed -->
+        <div class="dashboard-container">
+            <div class="tableauPlaceholder" id="viz1738499715885" style="position: relative; width: 100%; height: 80vh; overflow: hidden; display: block;">
                 <noscript>
                     <a href='#'>
                         <img alt=' ' src='https://public.tableau.com/static/images/G8/G85F2745Q/1_rss.png' style='border: none;' />
                     </a>
                 </noscript>
-                <object class='tableauViz' style='display:none; width: 100%; height: 100vh;'>
-                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                    <param name='embed_code_version' value='3' />
-                    <param name='path' value='shared/G85F2745Q' />
-                    <param name='toolbar' value='yes' />
-                    <param name='static_image' value='https://public.tableau.com/static/images/G8/G85F2745Q/1.png' />
-                    <param name='animate_transition' value='yes' />
-                    <param name='display_static_image' value='yes' />
-                    <param name='display_spinner' value='yes' />
-                    <param name='display_overlay' value='yes' />
-                    <param name='display_count' value='yes' />
-                    <param name='language' value='en-US' />
-                    <param name='filter' value='publish=yes' />
-                </object>
+                <script src="https://public.tableau.com/javascripts/api/viz_v1.js"></script>
+                <iframe frameborder="0" marginheight="0" marginwidth="0" title="Data Visualization" allowtransparency="true" allowfullscreen="true"
+                    class="tableauViz" 
+                    src="https://public.tableau.com/shared/G85F2745Q?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:embed_code_version=3&amp;:toolbar=yes&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes&amp;:language=en-US&amp;publish=yes&amp;:loadOrderID=0">
+                </iframe>
             </div>
         </div>
     </div>
 
-    <!-- Embed Tableau Script -->
-    <script type='text/javascript'>
-        var divElement = document.getElementById('viz1738499715885');
-        var vizElement = divElement.getElementsByTagName('object')[0];
-
-        // Ensure it is fully responsive
-        vizElement.style.width = '100%';
-        vizElement.style.height = '100vh';
-
-        var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-        vizElement.parentNode.insertBefore(scriptElement, vizElement);
-    </script>
+    <!-- Footer -->
+    <div class="footer">© 2025 Vila Ferdinand | Powered by Tableau & GitHub Pages</div>
 
 </body>
 </html>
