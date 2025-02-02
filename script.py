@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 import glob
 import pandas as pd
 from datetime import datetime
@@ -163,6 +164,7 @@ def main():
     try:
         login_to_website(driver)
         download_excel_report(driver)
+        print("Current Timestamp:", datetime.datetime.now())
     finally:
         driver.quit()
 
