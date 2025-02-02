@@ -1,13 +1,24 @@
-name: Trigger Local Script
+name: Run Local Script
 
 on:
   repository_dispatch:
-    types: [run_local_script]
+    types: [run_local_script]  # Matches event_type in the JS request
 
 jobs:
-  notify-local:
+  run-script:
     runs-on: ubuntu-latest
     steps:
-      - name: Send webhook to local PC
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
         run: |
-          curl -X POST http://192.168.1.108:5000/run-script
+          pip install -r requirements.txt || echo "No requirements.txt file found"
+
+      - name: Run Python Script
+        run: python script.py  # Replace with your script name
