@@ -151,24 +151,24 @@
     <div class="footer">© 2025 Vila Ferdinand |
 
 
-        <button onclick="runPythonScript()">Run Python Script</button>
+       <button onclick="runLocalScript()">Run Local Script</button>
 
 <script>
-async function runPythonScript() {
-    const token = "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";  // Replace this with your GitHub token
-    const repo ="MateoHaxhi07/-mateohaxhi.github.io" ;  // Replace with your GitHub repo name
-    const workflow = "run-script.yml";  // Name of the workflow file
+async function runLocalScript() {
+    const token = "YOUR_GITHUB_TOKEN";  // 🔹 Replace with your GitHub Personal Access Token
+    const repo = "MateoHaxhi07/-mateohaxhi.github.io";  // 🔹 Replace with your repo
+    const event_type = "run_local_script";  // This matches our GitHub Action trigger
 
-    await fetch(`https://api.github.com/repos/${repo}/actions/workflows/${workflow}/dispatches`, {
+    await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
         method: "POST",
         headers: {
             "Accept": "application/vnd.github.v3+json",
             "Authorization": `token ${token}`
         },
-        body: JSON.stringify({ ref: "main" })  // Replace with your branch name if different
+        body: JSON.stringify({ event_type })
     });
 
-    alert("Python script triggered!");
+    alert("Local script triggered!");
 }
 </script>
 
