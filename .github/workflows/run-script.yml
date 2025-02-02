@@ -1,0 +1,13 @@
+name: Trigger Local Script
+
+on:
+  repository_dispatch:
+    types: [run_local_script]
+
+jobs:
+  notify-local:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook to local PC
+        run: |
+          curl -X POST http://192.168.1.108:5000/run-script
