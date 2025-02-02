@@ -151,33 +151,30 @@
     <div class="footer">© 2025 Vila Ferdinand |
 
 
-       <button onclick="runLocalScript()">Run Local Script</button>
-
-<button onclick="runLocalScript()">Run Local Script</button>
+      <button onclick="runScript()">Run Local Script</button>
 
 <script>
-async function runLocalScript() {
-    const repo = "MateoHaxhi07/-mateohaxhi.github.io";  
-    const event_type = "run_local_script";  
+async function runScript() {
+    try {
+        const response = await fetch("http://localhost:5000/run-script", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" }
+        });
 
-    const response = await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
-        method: "POST",
-        headers: {
-            "Accept": "application/vnd.github.v3+json",
-            "Authorization": "Bearer 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",  // Replace with a valid PAT
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ event_type })
-    });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-    if (response.ok) {
-        alert("Local script triggered successfully!");
-    } else {
-        alert("Failed to trigger GitHub Action. Check console.");
-        console.log(await response.json());
+        const data = await response.json();
+        alert("✅ Script executed successfully!\nOutput: " + JSON.stringify(data.output));
+
+    } catch (error) {
+        alert("❌ Failed to run the script.\nError: " + error.message);
+        console.error("Error Details:", error);
     }
 }
 </script>
+
 
 
 </body>
